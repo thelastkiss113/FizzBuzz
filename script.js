@@ -52,3 +52,41 @@ while (true) {
 
 ///Part Three
 console.log('Part Three');
+   
+const data = `ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26`;
+
+let row = '';
+let cell = '';
+let isInCell = false; 
+let isInRow = true; 
+
+for (let i = 0; i < data.length; i++) {
+    const char = data[i];
+
+    if (char === ',') {
+        if (isInCell) {
+            row += cell;
+            cell = '';
+            isInCell = false;
+        }
+        row += ', ';
+    } else if (char === '\n') {
+        if (isInCell) {
+            row += cell;
+            cell = '';
+            isInCell = false;
+        }
+        console.log(row);
+        row = '';
+    } else {
+        cell += char;
+        isInCell = true;
+    }
+}
+
+if (isInCell) {
+    row += cell;
+}
+if (row.length > 0) {
+    console.log(row);
+}
