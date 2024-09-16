@@ -15,3 +15,40 @@ if (x % 3 === 0 && x % 5 === 0) {
     console.log ('Buzz');
 } else console.log(x);
 }
+
+
+///Part two
+console.log('Part Two');
+
+let n = 4;
+let number = n;
+
+while (true) {
+    let checkPrime = true;
+
+    if (number <= 1) {
+        checkPrime = false;
+    } else if (number <= 3) {
+        checkPrime = true;
+    } else if (number % 2 === 0 || number % 3 === 0) {
+        checkPrime = false;
+    } else {
+        for (let i = 5; i * i <= number; i += 6) {
+            if (number % i === 0 || number % (i + 2) === 0) {
+                checkPrime = false;
+                break;
+            }
+        }
+    }
+
+    if (checkPrime) {
+        console.log(`The next prime number to ${n} is ${number}.`);
+        break;
+    }
+
+    number += 1;
+}
+
+
+///Part Three
+console.log('Part Three');
